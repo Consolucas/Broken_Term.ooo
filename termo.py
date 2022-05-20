@@ -2,21 +2,10 @@ from string import ascii_lowercase as letters
 from filter import palavras
 from unidecode import unidecode
 
-def resolver(is_in, is_out, **positions):
+def resolver(is_out, **positions):
   
   for palavra in palavras:
     palavra = unidecode(palavra)
-    # pra cada letra que tem que estar,
-    # se ela não estiver, vai pra próxima
-    # palavra
-    has_all_in = True
-              
-    for i in is_in:
-      if i not in palavra:
-        has_all_in = False
-        break
-
-    if not has_all_in: continue
 
     # pra cada letra que não tem que estar,
     # se ela estiver, vai pra próxima palavra
@@ -47,6 +36,9 @@ def resolver(is_in, is_out, **positions):
     if not has_correct_pos: continue
 
 
+
+    # para cada letra que está presente na palavra,
+    # mas não está na posição correta
     has_incorrect_pos = True
 
     for i in range(5):
@@ -63,4 +55,9 @@ def resolver(is_in, is_out, **positions):
 
     print(palavra)
 
-resolver(is_in = "", is_out ="crasefibntpjh", e="o", in_b ="ou", in_c="l")
+# para cada letra em cinza, escreva-a em is_out
+# para cada letra em amarelo, digite-a em in_"letra da posição"= "letra" ---- ex: in_a = "c"
+# para cada letra em verde, digite-a em "letra da posição"= "letra" ---- ex: a = "d"
+# posição 1 = a, posição 2 = b ...
+
+resolver(is_out ="")
